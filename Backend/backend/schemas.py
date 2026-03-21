@@ -13,6 +13,11 @@ class UserLogin(BaseModel):
     password: str
 
 
+# Prompt request
+class PromptRequest(BaseModel):
+    prompt: str
+
+
 # Response schema
 class User(BaseModel):
     id: int
