@@ -1,19 +1,22 @@
 # 📘 The Art of Prompting
 ### AI-Powered Prompt Engineering Learning Platform
 
+🚧 **Status: Ongoing Project / Under Development**
+
 ---
 
 ## 📌 Table of Contents
 - Project Overview
 - Project Objectives
-- Core Features
+- Current Features
+- Planned Features
 - System Architecture
 - Backend Modules
 - Database Design
 - Tech Stack
 - Development Roadmap
 - Future Enhancements
-- Final Goal
+- Project Status
 - Project Summary
 
 ---
@@ -21,13 +24,14 @@
 # 🚀 Project Overview
 **The Art of Prompting** is an AI-powered learning platform designed to teach users how to write effective prompts for Large Language Models (LLMs).
 
-The platform combines:
-- Learning modules
-- Prompt testing
+The platform will combine:
+- Structured learning modules
+- Interactive prompt testing
 - NLP-based prompt evaluation
-- AI feedback
-- Gamified challenges
-- Performance analytics
+- AI feedback and prompt improvement
+- Gamified prompt challenges
+- Performance tracking and analytics
+- Admin content management system
 
 The goal of this project is to help users learn **prompt engineering through practice, analysis, feedback, and challenges**.
 
@@ -49,58 +53,81 @@ The platform aims to:
 
 ---
 
-# 🧠 Core Features
+# 🧠 Current Features (Work in Progress)
+Currently being developed:
 
-## 1. User Authentication System
-Users can:
-- Sign up
-- Login
-- Secure password hashing
-- JWT authentication (planned)
-- Guest mode access
+- User Authentication (Signup/Login)
+- Database Setup
+- Prompt Submission API
+- AI Response Integration
+- Basic Prompt Analysis
+- Backend API using FastAPI
+- Project Structure and Backend Architecture
 
-**Technology:** FastAPI, SQLAlchemy, SQLite/PostgreSQL, JWT
-
----
-
-## 2. Structured Learning Modules
-Users will learn:
-- What is Prompt Engineering
-- Prompt Types
-- Zero-shot prompting
-- Few-shot prompting
-- Chain-of-thought prompting
-- Role prompting
-- System prompts
-- Prompt optimization techniques
-- Advanced prompt strategies
-
-Each lesson includes:
-- Theory
-- Examples
-- Practice exercises
-- Quiz/questions
+More features are under development.
 
 ---
 
-## 3. Interactive Prompt Lab (Main Feature)
-Users can:
-- Write prompts
-- Send prompts to AI
-- See AI responses
-- Get prompt analysis
-- Get prompt classification
-- Get improved prompt suggestions
+# 🧩 Planned Features
+
+## Learning System
+- Prompt engineering lessons
+- Examples and exercises
+- Quizzes
+
+## Prompt Lab
+- Prompt testing
+- AI responses
+- Prompt scoring
+- Prompt classification
+- Prompt improvement suggestions
+
+## NLP Prompt Analyzer
+- Clarity score
+- Structure score
+- Specificity score
+- Readability score
+- Overall prompt score
+
+## Prompt Challenges
+- Daily challenges
+- Weekly challenges
+- Prompt rewrite challenges
+- Few-shot prompting challenges
+- Role prompting challenges
+
+## Analytics Dashboard
+- Prompt quality graph
+- Progress tracking
+- Difficulty level progression
+- Average prompt score
+- Improvement tracking
+
+## Admin Panel
+- Add lessons
+- Add challenges
+- Manage users
+- View analytics
+- Moderate prompts
+
+## Guest Mode
+- Limited prompt trials
+- Demo lessons access
+- Signup after trial limit
+
+---
+
+# 🏗️ System Architecture
 
 ### Prompt Lab Workflow
 ```
-User Prompt 
+User Prompt
    ↓
 NLP Analyzer
    ↓
 Prompt Classifier
    ↓
-AI Response
+AI Response Engine
    ↓
 Feedback Engine
    ↓
@@ -109,146 +136,9 @@ Final Output
 
 ---
 
-## 4. NLP-Based Prompt Analyzer
-The system analyzes prompts based on:
-- Length
-- Clarity
-- Structure
-- Keywords
-- Specificity
-- Readability
-- Complexity
+# 🧱 Backend Modules
+The backend will be divided into the following modules:
 
-### Example Output
-```json
-{
-  "clarity": 8,
-  "structure": 7,
-  "specificity": 6,
-  "length": 9,
-  "overall_score": 7.5
-}
-```
-
----
-
-## 5. Prompt Classification Model
-Prompts will be classified into:
-- Beginner
-- Intermediate
-- Advanced
-
-Classification factors:
-- Prompt length
-- Instructions
-- Constraints
-- Role prompting
-- Multi-step reasoning
-- Output formatting
-
-Future plan: Train ML model for classification.
-
----
-
-## 6. AI Feedback Engine
-The AI will:
-- Suggest improvements
-- Rewrite better prompt
-- Explain why prompt can be improved
-- Suggest structure
-- Suggest constraints
-- Suggest examples
-
-### Example
-**Original Prompt**
-```
-Explain AI
-```
-
-**Improved Prompt**
-```
-Explain Artificial Intelligence in simple terms for a beginner, include real-world examples and key applications.
-```
-
----
-
-# 📊 Performance Tracking System
-The platform will track:
-- Prompts written
-- Prompt scores
-- Improvement over time
-- Lessons completed
-- Challenges completed
-- Daily streak
-- Average prompt quality
-- Difficulty level progression
-
----
-
-# 🧩 Prompt Challenges (Gamification)
-Gamified system includes:
-- Daily prompt challenge
-- Weekly challenge
-- Prompt rewrite challenge
-- Prompt optimization challenge
-- Role prompting challenge
-- Few-shot prompt challenge
-
-Users earn:
-- Points
-- Badges
-- Levels
-- Achievements
-
----
-
-# 📈 Analytics Dashboard
-
-## User Dashboard
-Users will see:
-- Prompt quality graph
-- Progress over time
-- Lessons completed
-- Challenges completed
-- Prompt difficulty distribution
-- Average score
-- Improvement trend
-
-## Admin Dashboard
-Admin will see:
-- Total users
-- Active users
-- Most used prompts
-- Average scores
-- Platform analytics
-
----
-
-# 👨‍💻 Admin Panel
-Admin can:
-- Add lessons
-- Add challenges
-- Manage users
-- View analytics
-- Moderate prompts
-- Update content
-- Manage difficulty levels
-
----
-
-# 👤 Guest Mode Feature
-Guest users can:
-- Try prompt lab
-- Limited number of prompt trials
-- View demo lessons
-
-After trial → must sign up.
-
----
-
-# 🏗️ System Architecture
-
-## Backend Modules
 - Authentication System
 - Prompt Engine
 - NLP Analyzer
@@ -323,11 +213,11 @@ After trial → must sign up.
 - NLP (NLTK / spaCy)
 - OpenAI / LLM API
 
-## Frontend
+## Frontend (Planned)
 - HTML
 - CSS
 - JavaScript
-- React (planned)
+- React
 
 ## AI / NLP
 - Prompt classification
@@ -340,13 +230,13 @@ After trial → must sign up.
 # 🗺️ Development Roadmap
 
 ## Phase 1 — Backend Foundation
-- Signup/Login
-- Database setup
+- User Authentication
+- Database Setup
 - Prompt API
+- AI Response Integration
 - NLP Analyzer
 - Prompt Classifier
 - Feedback Engine
-- AI Response Engine
 
 ## Phase 2 — Core Platform
 - Prompt History
@@ -372,7 +262,7 @@ After trial → must sign up.
 ---
 
 # 🧠 Future Enhancements
-Future ideas:
+Planned future ideas:
 - Prompt leaderboard
 - Community prompts
 - Prompt sharing
@@ -386,26 +276,32 @@ Future ideas:
 
 ---
 
-# 🎯 Final Goal of Project
-The final platform will be:
+# 🚧 Project Status
+This project is currently **under development**.
 
-A complete Prompt Engineering Learning Platform with AI, NLP, analytics, challenges, and progress tracking.
+Completed:
+- Project planning
+- Backend structure
+- Authentication system (in progress)
+- Prompt API (in progress)
 
-This will include:
-- Learning platform
-- AI prompt lab
-- NLP evaluation
-- Gamification
-- Analytics
+In Progress:
+- NLP Prompt Analyzer
+- Prompt Classification
+- AI Feedback Engine
+
+Planned:
+- Frontend development
+- Analytics dashboard
 - Admin panel
-- Guest mode
-- Prompt history
-- AI feedback engine
+- Gamification system
 
 ---
 
 # 📌 Project Summary
 **The Art of Prompting** is an AI-powered interactive learning platform that teaches prompt engineering through practice, analysis, feedback, and gamified challenges while tracking user progress and improving prompt-writing skills using NLP and AI models.
+
+This project is currently under development and will evolve into a full-scale AI learning platform.
 
 ---
 
