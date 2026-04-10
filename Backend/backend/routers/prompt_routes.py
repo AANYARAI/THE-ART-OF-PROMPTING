@@ -1,3 +1,4 @@
+from utils.auth_dependency import get_current_user
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 from database import SessionLocal
@@ -25,7 +26,11 @@ def test():
 
 
 @router.post("/prompt/full-process")
-def full_prompt_process(data: PromptRequest, db: Session = Depends(get_db)):
+def full_prompt_process(
+    data: PromptRequest,
+    db: Session = Depends(get_db),
+    user=Depends(get_current_user)
+):
     prompt = data.prompt
 
     analysis = analyze_prompt(prompt)
@@ -35,7 +40,7 @@ def full_prompt_process(data: PromptRequest, db: Session = Depends(get_db)):
 
     # Save to database
     new_prompt = Prompt(
-        user_id=1,
+        user_id=user.id,
         prompt_text=prompt,
         improved_prompt=improved_prompt,
         ai_response=ai_response,

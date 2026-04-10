@@ -1,3 +1,4 @@
+from utils.token import create_access_token
 from fastapi import FastAPI, Depends, HTTPException
 from sqlalchemy.orm import Session
 
@@ -70,4 +71,10 @@ def login(user: schemas.UserCreate, db: Session = Depends(get_db)):
     if not auth.verify_password(user.password, db_user.password):
         raise HTTPException(status_code=400, detail="Incorrect password")
 
-    return {"message": "Login successful"}
+    # 🔐 Create JWT token
+    token = create_access_token({"sub": db_user.email})
+
+    return {
+        "access_token": token,
+        "token_type": "bearer"
+    }
