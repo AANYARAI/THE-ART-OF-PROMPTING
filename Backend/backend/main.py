@@ -1,4 +1,3 @@
-from utils.token import create_access_token
 from fastapi import FastAPI, Depends, HTTPException
 from sqlalchemy.orm import Session
 
@@ -7,15 +6,23 @@ import schemas
 import auth
 
 from database import SessionLocal, engine
-from routers import prompt_routes
+from utils.token import create_access_token
 
+# ✅ Import routers
+from routers import prompt_routes
+from routers import analytics_routes   # NEW
+
+# ✅ Create tables
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
+# ✅ Include routers
 app.include_router(prompt_routes.router)
+app.include_router(analytics_routes.router)   # NEW
 
 
+# ✅ Database dependency
 def get_db():
     db = SessionLocal()
     try:
@@ -24,43 +31,35 @@ def get_db():
         db.close()
 
 
+# ✅ Root route
 @app.get("/")
 def read_root():
     return {"message": "API Running"}
 
 
+# ✅ Signup
 @app.post("/signup")
 def signup(user: schemas.UserCreate, db: Session = Depends(get_db)):
-    try:
-        print("Signup called")
+    existing_user = db.query(models.User).filter(models.User.email == user.email).first()
 
-        existing_user = db.query(models.User).filter(models.User.email == user.email).first()
-        print("Checked existing user")
+    if existing_user:
+        raise HTTPException(status_code=400, detail="User already exists")
 
-        if existing_user:
-            raise HTTPException(status_code=400, detail="User already exists")
+    hashed_password = auth.hash_password(user.password)
 
-        hashed_password = auth.hash_password(user.password)
-        print("Password hashed")
+    new_user = models.User(
+        email=user.email,
+        password=hashed_password
+    )
 
-        new_user = models.User(
-            email=user.email,
-            password=hashed_password
-        )
+    db.add(new_user)
+    db.commit()
+    db.refresh(new_user)
 
-        db.add(new_user)
-        db.commit()
-        db.refresh(new_user)
-
-        print("User saved")
-
-        return {"message": "User created successfully"}
-
-    except Exception as e:
-        print("ERROR:", e)
-        return {"error": str(e)}
+    return {"message": "User created successfully"}
 
 
+# ✅ Login (JWT)
 @app.post("/login")
 def login(user: schemas.UserCreate, db: Session = Depends(get_db)):
     db_user = db.query(models.User).filter(models.User.email == user.email).first()

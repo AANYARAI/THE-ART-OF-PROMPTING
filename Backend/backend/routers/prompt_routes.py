@@ -65,15 +65,21 @@ def full_prompt_process(
     }
 
 @router.get("/prompt/history")
-def get_prompt_history(db: Session = Depends(get_db)):
-    prompts = db.query(Prompt).all()
+def get_prompt_history(
+    db: Session = Depends(get_db),
+    user=Depends(get_current_user)
+):
+    prompts = db.query(Prompt).filter(Prompt.user_id == user.id).all()
     return prompts
 
 
 
 @router.get("/prompt/{prompt_id}")
 def get_prompt(prompt_id: int, db: Session = Depends(get_db)):
-    prompt = db.query(Prompt).filter(Prompt.id == prompt_id).first()
+    prompt = db.query(Prompt).filter(
+    Prompt.id == prompt_id,
+    Prompt.user_id == user.id
+).first()
 
     if not prompt:
         return {"error": "Prompt not found"}
@@ -83,7 +89,10 @@ def get_prompt(prompt_id: int, db: Session = Depends(get_db)):
 
 @router.delete("/prompt/{prompt_id}")
 def delete_prompt(prompt_id: int, db: Session = Depends(get_db)):
-    prompt = db.query(Prompt).filter(Prompt.id == prompt_id).first()
+    prompt = db.query(Prompt).filter(
+    Prompt.id == prompt_id,
+    Prompt.user_id == user.id
+).first()
 
     if not prompt:
         return {"error": "Prompt not found"}
